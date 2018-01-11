@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Google Oauth</h1>
+        <hr>
+        Nombre: {{ user.name }}<br>
+        ID: {{ user.id }}<br>
+        Email: {{ user.email }}<br>
+        <img src="{{ user.avatar }}" />
+
+
+        {%   if check == 1 %}
+        <b>User in</b>
+            {% else %}
+        <b>User created</b>
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}
