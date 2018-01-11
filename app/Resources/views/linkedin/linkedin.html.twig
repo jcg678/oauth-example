@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Linkedin Oauth</h1>
+        <hr>
+        Nombre: {{ user.firstName }}<br>
+        ID: {{ user.id }}<br>
+        Email: {{ user.email }}<br>
+        Puesto: {{ user.Description }}<br>
+        <img src="{{ user.imageUrl }}" />
+
+
+
+        {%   if check == 1 %}
+            <b>User in</b>
+        {% else %}
+            <b>User created</b>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

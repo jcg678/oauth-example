@@ -38,6 +38,3 @@ services:
         class: AppBundle\EventSubscriber\PruebasEventSubscriber
         tags:
             - { name: kernel.event_listener, event: custom.event.pruebas_event, method: eventoOut }
-    #google_main:
-        #class: AppBundle\Controller\GoogleController
-        #autowire: true

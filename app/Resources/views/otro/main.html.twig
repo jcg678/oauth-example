@@ -3,7 +3,16 @@
 {% block body %}
 
     <div class="container">
-        <h1>Apis Connect</h1>
-    <a href="{{ path('connect_google') }}"> Google Oauth</a>
+        <div id="logos">
+            <h1>Apis Connect</h1>
+            <a href="{{ path('connect_google') }}">
+                <image height="150px" width="150px" src="{{ asset('images/google.png') }}"></image>
+            </a>
+            <a href="{{ path('connect_linkedin') }}">
+                <image height="150px" width="150px" src="{{ asset('images/linkedin.png') }}"></image>
+            </a>
+        </div>
     </div>
+
+
 {% endblock %}

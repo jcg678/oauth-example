@@ -30,6 +30,12 @@ class User extends BaseUser
     protected $googleID;
 
     /**
+     * @ORM\Column(type="string",length=200,nullable=true)
+     */
+    protected $linkedinID;
+
+
+    /**
      * @ORM\Column(type="string",length=100,nullable=true)
      */
     protected $surname;
@@ -111,5 +117,29 @@ class User extends BaseUser
     public function getGoogleID()
     {
         return $this->googleID;
+    }
+
+    /**
+     * Set linkedinID
+     *
+     * @param string $linkedinID
+     *
+     * @return User
+     */
+    public function setLinkedinID($linkedinID)
+    {
+        $this->linkedinID = $linkedinID;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinID
+     *
+     * @return string
+     */
+    public function getLinkedinID()
+    {
+        return $this->linkedinID;
     }
 }

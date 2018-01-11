@@ -30,6 +30,12 @@ class User extends BaseUser
     protected $googleID;
 
     /**
+     * @ORM\Column(type="string",length=200,nullable=true)
+     */
+    protected $linkedinID;
+
+
+    /**
      * @ORM\Column(type="string",length=100,nullable=true)
      */
     protected $surname;
@@ -87,5 +93,29 @@ class User extends BaseUser
     public function getSurname()
     {
         return $this->surname;
+    }
+
+    /**
+     * Set googleID
+     *
+     * @param string $googleID
+     *
+     * @return User
+     */
+    public function setGoogleID($googleID)
+    {
+        $this->googleID = $googleID;
+
+        return $this;
+    }
+
+    /**
+     * Get googleID
+     *
+     * @return string
+     */
+    public function getGoogleID()
+    {
+        return $this->googleID;
     }
 }

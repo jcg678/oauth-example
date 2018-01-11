@@ -75,6 +75,21 @@ knpu_oauth2_client:
         google_main:
             type: google
             client_id: '%googleclient%'
-            client_secret: '%googlesecrect%'
+            client_secret: '%googlesecret%'
             redirect_route: connect_google_check
             redirect_params: {}
+        # will create service: "knpu.oauth2.client.linkedin"
+        # an instance of: KnpU\OAuth2ClientBundle\Client\Provider\LinkedInClient
+        # composer require league/oauth2-linkedin
+        linkedin_main:
+            # must be "linkedin" - it activates that type!
+            type: linkedin
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%linkedinclient%'
+            client_secret: '%linkedinsecret%'
+            # a route name you'll create
+            redirect_route: connect_linkedin_check
+            redirect_params: {}
+
+            # whether to check OAuth2 "state": defaults to true
+            # use_state: true
