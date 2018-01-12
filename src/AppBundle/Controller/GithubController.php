@@ -10,18 +10,18 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 
-class LinkedinController extends Controller
+class GithubController extends Controller
 {
     /**
      * Link to this controller to start the "connect" process
      *
-     * @Route("/connect/linkedin", name="connect_linkedin")
+     * @Route("/connect/github", name="connect_github")
      */
     public function connectAction()
     {
         // will redirect to linkedin!
         return $this->get('oauth2.registry')
-            ->getClient('linkedin_main')// key used in config.yml
+            ->getClient('github_main')// key used in config.yml
             ->redirect();
     }
 
@@ -30,19 +30,19 @@ class LinkedinController extends Controller
      * because this is the "redirect_route" you configured
      * in config.yml
      *
-     * @Route("/connect/linkedin/check", name="connect_linkedin_check")
+     * @Route("/connect/github/check", name="connect_github_check")
      */
     public function connectCheckAction(Request $request)
     {
-        /** @var \KnpU\OAuth2ClientBundle\Client\Provider\LinkedInClient $client */
+        /** @var \KnpU\OAuth2ClientBundle\Client\Provider\GithubClient $client */
         $client = $this->get('oauth2.registry')
-            ->getClient('linkedin_main');
+            ->getClient('github_main');
 
         try {
             /** @var \League\OAuth2\Client\Provider\Linkedin $user */
             $user = $client->fetchUser();
             // do something with all this new power!
-            $user->getFirstName();
+            $user->getName();
             // ...
         } catch (IdentityProviderException $e) {
             // something went wrong!
@@ -55,7 +55,7 @@ class LinkedinController extends Controller
         $id = $user->getId();
         $check = 0;
         //Check if user exist with googleID
-        $userIN = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy(['linkedinID' => $id]);
+        $userIN = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy(['githubID' => $id]);
 
         if ($userIN != null) {
             $check = 1;
@@ -65,8 +65,8 @@ class LinkedinController extends Controller
             //if user not exist create a new with googleID
             $userManager = $this->get('fos_user.user_manager');
             $userRes = $userManager->createUser();
-            $userRes->setUsername($user->getEmail());
-            $userRes->setEmail($user->getEmail());
+            $userRes->setUsername($user->getNickname());
+            $userRes->setEmail($user->getNickname());
             $userRes->setEnabled(1);
             $userRes->setEmailCanonical($user->getEmail());
             $userRes->setPlainPassword($user->getId());
@@ -74,10 +74,9 @@ class LinkedinController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             $userlast = $em->getRepository('AppBundle:User')->find($userRes->getID());
-            $userlast->setLinkedinID($user->getId());
+            $userlast->setGithubID($user->getId());
             $em->persist($userlast);
             $em->flush();
-
         }
 
         //login manually

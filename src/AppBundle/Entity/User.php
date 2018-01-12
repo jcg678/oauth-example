@@ -34,6 +34,11 @@ class User extends BaseUser
      */
     protected $linkedinID;
 
+    /**
+     * @ORM\Column(type="string",length=200,nullable=true)
+     */
+    protected $githubID;
+
 
     /**
      * @ORM\Column(type="string",length=100,nullable=true)
@@ -141,5 +146,29 @@ class User extends BaseUser
     public function getLinkedinID()
     {
         return $this->linkedinID;
+    }
+
+    /**
+     * Set githubID
+     *
+     * @param string $githubID
+     *
+     * @return User
+     */
+    public function setGithubID($githubID)
+    {
+        $this->githubID = $githubID;
+
+        return $this;
+    }
+
+    /**
+     * Get githubID
+     *
+     * @return string
+     */
+    public function getGithubID()
+    {
+        return $this->githubID;
     }
 }

@@ -90,6 +90,14 @@ knpu_oauth2_client:
             # a route name you'll create
             redirect_route: connect_linkedin_check
             redirect_params: {}
-
             # whether to check OAuth2 "state": defaults to true
             # use_state: true
+        github_main:
+            # must be "github" - it activates that type!
+            type: github
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%githubclient%'
+            client_secret: '%githubsecret%'
+            # a route name you'll create
+            redirect_route: connect_github_check
+            redirect_params: {}
