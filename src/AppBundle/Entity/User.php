@@ -41,6 +41,17 @@ class User extends BaseUser
 
 
     /**
+     * @ORM\Column(type="string",length=200,nullable=true)
+     */
+    protected $facebookID;
+
+
+    /**
+     * @ORM\Column(type="string",length=200,nullable=true)
+     */
+    protected $dropboxID;
+
+    /**
      * @ORM\Column(type="string",length=100,nullable=true)
      */
     protected $surname;
@@ -170,5 +181,53 @@ class User extends BaseUser
     public function getGithubID()
     {
         return $this->githubID;
+    }
+
+    /**
+     * Set facebookID
+     *
+     * @param string $facebookID
+     *
+     * @return User
+     */
+    public function setFacebookID($facebookID)
+    {
+        $this->facebookID = $facebookID;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookID
+     *
+     * @return string
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookID;
+    }
+
+    /**
+     * Set dropboxID
+     *
+     * @param string $dropboxID
+     *
+     * @return User
+     */
+    public function setDropboxID($dropboxID)
+    {
+        $this->dropboxID = $dropboxID;
+
+        return $this;
+    }
+
+    /**
+     * Get dropboxID
+     *
+     * @return string
+     */
+    public function getDropboxID()
+    {
+        return $this->dropboxID;
     }
 }

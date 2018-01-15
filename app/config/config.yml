@@ -101,3 +101,22 @@ knpu_oauth2_client:
             # a route name you'll create
             redirect_route: connect_github_check
             redirect_params: {}
+        facebook_main:
+            # must be "facebook" - it activates that type!
+            type: facebook
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%facebookclient%'
+            client_secret: '%facebooksecret%'
+            # a route name you'll create
+            redirect_route: connect_facebook_check
+            redirect_params: {}
+            graph_api_version: v2.5
+        dropbox_main:
+            # must be "dropbox" - it activates that type!
+            type: dropbox
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: '%dropboxclient%'
+            client_secret: '%dropboxsecret%'
+            # a route name you'll create
+            redirect_route: connect_dropbox_check
+            redirect_params: {}
